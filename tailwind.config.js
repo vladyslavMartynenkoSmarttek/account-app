@@ -9,7 +9,7 @@ module.exports = {
     ],
 
     // enable dark mode via class strategy
-    darkMode:  ['class', '[data-mode="dark"]'],
+    darkMode: ['class', '[data-mode="dark"]'],
 
     theme: {
         extend: {
