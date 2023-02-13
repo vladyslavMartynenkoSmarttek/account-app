@@ -8,7 +8,7 @@ export default function Table(props) {
         const interval = setInterval(() => {
             //get lines from api
             let linesAPI = [];
-            fetch('http://localhost:8000/api/analytic/logs', {
+            fetch('http://45.89.88.115/api/analytic/logs', {
                 method: 'GET',
             })
                 .then(response => response.json())
