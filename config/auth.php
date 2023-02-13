@@ -108,4 +108,6 @@ return [
 
     'password_timeout' => 10800,
 
+    'ip_blacklist' => explode(',', env('IP_BLACKLIST', '')),
+
 ];

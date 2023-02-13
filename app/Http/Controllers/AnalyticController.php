@@ -36,6 +36,9 @@
             //convert lines to array with keys IP,Date,Method,URL
             foreach ($lines as $key => $line) {
                 $line = explode(' ', $line);
+                if ($line[0] === '127.0.0.1' or $line[0] === '45.89.88.115'){
+                    continue;
+                }
                 $lines[$key] = [
                     'ip' => $line[0],
                     'date' => $line[3] . ' ' . $line[4],

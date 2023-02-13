@@ -30,6 +30,7 @@ export default function DarkModeSwitcher() {
         //set state darkmode
         setIsDarkMode(checked);
     }
+
     useEffect(() => {
 
         if (localStorage.getItem('theme')=== 'light') {
