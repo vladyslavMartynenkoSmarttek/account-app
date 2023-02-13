@@ -8,7 +8,7 @@
     class BlockIpMiddleware
     {
         //get ips from env
-        public $blockIps = ['whitelist-ip-1', 'whitelist-ip-2', '127.0.0.1'];
+        public $blockIps = [];
 
         /**
          * Handle an incoming request.
