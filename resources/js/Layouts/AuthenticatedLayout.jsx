@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+import {Link} from '@inertiajs/react';
 import * as React from 'react';
 import DarkModeSwitcher from "@/Components/DarkModeSwitcher";
-export default function Authenticated({ auth, header, children }) {
+
+export default function Authenticated({auth, header, children}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -17,7 +18,8 @@ export default function Authenticated({ auth, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current dark:fill-red-900 text-gray-800" />
+                                    <ApplicationLogo
+                                        className="block h-9 w-auto fill-current dark:fill-red-900 text-gray-800"/>
                                 </Link>
                             </div>
 
@@ -25,10 +27,17 @@ export default function Authenticated({ auth, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+
+                                {/*<NavLink href={route('posts.index')} active={route().current('posts.index')}>*/}
+                                {/*    Posts*/}
+                                {/*</NavLink>*/}
+
+                                <NavLink href={route('analytic.index')} active={route().current('analytic.index')}>
+                                    Analytic
+                                </NavLink>
                             </div>
-                            <NavLink href={route('posts.index')} active={route().current('posts.index')}>
-                                Posts
-                            </NavLink>
+
+
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -123,7 +132,7 @@ export default function Authenticated({ auth, header, children }) {
                 <header className="bg-gray-100 shadow bg-white dark:bg-slate-800">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between align-middle">
                         {header}
-                        <p style={{height:30}}><DarkModeSwitcher  /></p>
+                        <p style={{height: 30}}><DarkModeSwitcher/></p>
                     </div>
                 </header>
             )}
