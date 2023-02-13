@@ -39,7 +39,7 @@
                 $lines[$key] = [
                     'ip' => $line[0],
                     'date' => $line[3] . ' ' . $line[4],
-                    'method' => $line[5],
+                    'method' => str_replace('"','',$line[5]),
                     'url' => $line[6],
                 ];
             }
