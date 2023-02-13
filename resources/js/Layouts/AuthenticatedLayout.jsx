@@ -123,7 +123,7 @@ export default function Authenticated({ auth, header, children }) {
                 <header className="bg-gray-100 shadow bg-white dark:bg-slate-800">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between align-middle">
                         {header}
-                        <p style={{height:30}}><DarkModeSwitcher /></p>
+                        <p style={{height:30}}><DarkModeSwitcher  /></p>
                     </div>
                 </header>
             )}

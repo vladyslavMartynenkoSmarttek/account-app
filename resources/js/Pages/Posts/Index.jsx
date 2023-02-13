@@ -17,7 +17,7 @@ export default function DashboardPosts(props) {
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Posts</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-white leading-tight">Posts</h2>}
         >
             <Head title="Posts"/>
 

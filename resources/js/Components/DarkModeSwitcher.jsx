@@ -1,18 +1,19 @@
 import {DarkModeSwitch} from "react-toggle-dark-mode";
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import * as ReactDOM from 'react-dom';
+
 export default function DarkModeSwitcher() {
 //export DarkModeSwitcher
-    const [isDarkMode, setIsDarkMode] = React.useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleDarkMode = (checked) => {
-        if (checked){
+        if (checked) {
             document.documentElement.classList.add('dark');
             //set attr data-mode
             document.documentElement.setAttribute('data-mode', 'dark');
             //set body data-mode
             document.body.setAttribute('data-mode', 'dark');
-        }else {
+        } else {
             document.documentElement.classList.remove('dark');
             //remove attr data-mode
             document.documentElement.removeAttribute('data-mode');
@@ -29,9 +30,19 @@ export default function DarkModeSwitcher() {
         //set state darkmode
         setIsDarkMode(checked);
     }
+    useEffect(() => {
 
-    return<DarkModeSwitch
-        style={{ marginBottom: '2rem' }}
+        if (localStorage.getItem('theme')=== 'light') {
+            setIsDarkMode(false);
+        }
+        if (localStorage.getItem('theme')=== 'dark') {
+            setIsDarkMode(true);
+        }
+
+    }, []);
+
+    return <DarkModeSwitch
+        style={{marginBottom: '0'}}
         checked={isDarkMode}
         onChange={toggleDarkMode}
         size={30}
