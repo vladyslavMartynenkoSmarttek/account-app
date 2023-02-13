@@ -64,9 +64,9 @@ export default function Table(props) {
                             {
                                 lines.map((line, index) => {
                                     return (
-                                        <tr key={index}>
+                                        <tr key={index + 1}>
                                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                                {index}
+                                                {index + 1}
                                             </td>
                                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                                 {line.ip}
