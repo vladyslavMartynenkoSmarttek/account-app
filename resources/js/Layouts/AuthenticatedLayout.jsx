@@ -28,10 +28,6 @@ export default function Authenticated({auth, header, children}) {
                                     Dashboard
                                 </NavLink>
 
-                                {/*<NavLink href={route('posts.index')} active={route().current('posts.index')}>*/}
-                                {/*    Posts*/}
-                                {/*</NavLink>*/}
-
                                 <NavLink href={route('analytic.index')} active={route().current('analytic.index')}>
                                     Analytic
                                 </NavLink>
