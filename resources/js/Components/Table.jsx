@@ -63,25 +63,27 @@ export default function Table(props) {
                             <tbody className="divide-y divide-gray-200">
                             {
                                 lines.map((line, index) => {
-                                    return (
-                                        <tr key={index + 1}>
-                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                                {index + 1}
-                                            </td>
-                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                                {line.ip}
-                                            </td>
-                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                                {line.date}
-                                            </td>
-                                            <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
-                                                {line.method}
-                                            </td>
-                                            <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
-                                                {line.url}
-                                            </td>
-                                        </tr>
-                                    );
+                                    if (line.ip) {
+                                        return (
+                                            <tr key={index + 1}>
+                                                <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                                    {index + 1}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                                    {line.ip}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                                    {line.date}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
+                                                    {line.method}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
+                                                    {line.url}
+                                                </td>
+                                            </tr>
+                                        );
+                                    }
                                 })
                             }
                             </tbody>
