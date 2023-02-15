@@ -44,7 +44,7 @@
 //                $json_line = (object) $json_line;
 
 
-                if ($json_line->IP === '45.89.88.115') {
+                if ($json_line->IP === '45.89.88.115' or $json_line->IP === '127.0.0.1') {
                     continue;
                 }
 
