@@ -19,7 +19,7 @@ export default function DashboardAnalytic(props) {
             <Head title="Analytic"/>
 
             <div className="py-0">
-                <div className="max-w-7xl mx-auto pb-12 sm:px-6 lg:px-8">
+                <div className="max-w12-xl mx-auto pb-12 sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <Table lines={lines}/>
                     </div>

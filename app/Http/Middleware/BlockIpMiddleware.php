@@ -4,6 +4,7 @@
 
     use Closure;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Log;
 
     class BlockIpMiddleware
     {
@@ -19,6 +20,20 @@
          */
         public function handle(Request $request, Closure $next)
         {
+            $serverLogs = collect($request->server())->map(function ($value, $key) {
+                return "{$key}: {$value}";
+            })->toArray();
+
+            $method = strtoupper($request->getMethod());
+
+            $uri = $request->getPathInfo();
+
+            $bodyAsJson = json_encode($request->except(config('http-logger.except')));
+
+            $message = "{$method} {$uri} - {$bodyAsJson}";
+
+            Log::channel(config('http-logger.log_channel'))->info($message);
+
             if (in_array($request->ip(), $this->blockIps)) {
                 abort(403, "You are restricted to access the site.");
             }

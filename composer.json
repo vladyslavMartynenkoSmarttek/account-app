@@ -11,6 +11,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",
+        "spatie/laravel-activitylog": "^4.7",
+        "spatie/laravel-http-logger": "^1.10",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

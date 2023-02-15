@@ -8,16 +8,19 @@ export default function Table(props) {
         const interval = setInterval(() => {
             //get lines from api
             let linesAPI = [];
-            fetch('http://45.89.88.115/api/analytic/logs', {
+            const urlLogs = 'http://127.0.0.1:8000/api/analytic/logs';
+            fetch(urlLogs, {
                 method: 'GET',
             })
                 .then(response => response.json())
                 .then(data => {
                     setLines(data);
                 });
-        }, 1000);
+        }, 10000);
         return () => clearInterval(interval);
     }, []);
+
+    console.log(lines);
 
 
     return (
@@ -48,19 +51,38 @@ export default function Table(props) {
                                 </th>
                                 <th
                                     scope="col"
-                                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                                 >
                                     Method
                                 </th>
                                 <th
                                     scope="col"
-                                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                                 >
                                     Url
                                 </th>
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                                >
+                                    Port
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                                >
+                                    Scheme
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                                >
+                                    Body
+                                </th>
+
                             </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-200">
+                            <tbody className="divide-y overflow-x-scroll divide-gray-200">
                             {
                                 lines.map((line, index) => {
                                     if (line.ip) {
@@ -80,6 +102,15 @@ export default function Table(props) {
                                                 </td>
                                                 <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
                                                     {line.url}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
+                                                    {line.port}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
+                                                    {line.scheme}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
+                                                    {line.body}
                                                 </td>
                                             </tr>
                                         );
