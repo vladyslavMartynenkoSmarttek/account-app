@@ -16,7 +16,7 @@ export default function Table(props) {
                 .then(data => {
                     setLines(data);
                 });
-        }, 10000);
+        }, 60000);
         return () => clearInterval(interval);
     }, []);
 

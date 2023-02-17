@@ -42,29 +42,21 @@
                 $json_line = substr($json_line, 0, -2);
                 $json_line = json_decode($json_line);
 
-//                $json_line = (object) $json_line;
-
                 $skip_ip = env('SKIP_IP', '45.89.88.115');
                 if ($json_line->IP === $skip_ip) {
                     continue;
                 }
 
-                /*
-                 *  $log = [
-                           + 'METHOD' => $request->getMethod(),
-                          +  'REQUEST_BODY' => $request->all(),
-                           + 'REQUEST_URI' => $request->getRequestUri(),
-                           + 'IP' => $request->ip(),
-                            'PORT' => $request->getPort(),
-                            'SCHEME' => $request->getScheme(),
-                           + 'DATE' => date('Y-m-d H:i:s')
-                        ];
-                 */
-
                 $body = '';
                 if (isset($json_line->REQUEST_BODY) and $json_line->REQUEST_BODY) {
                     $body = implode('; ', array_map(
                         function ($v, $k) {
+                            if(is_object($v)){
+                                $v = json_encode($v);
+                            }
+                            if (is_array($v)) {
+                                $v = implode(', ', $v);
+                            }
                             return $k . ':' . $v;
                         },
                         (array)$json_line->REQUEST_BODY,
