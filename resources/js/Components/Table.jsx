@@ -25,8 +25,8 @@ export default function Table(props) {
         <div className="flex flex-col">
             <div className="overflow-x-auto">
                 <div className=" w-full inline-block align-middle">
-                    <div className="overflow-hidden border rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200">
+                    <div className="overflow-x-scroll border rounded-lg">
+                        <table className="min-w-full divide-y divide-gray-200 ">
                             <thead className="bg-gray-50">
                             <tr>
                                 <th

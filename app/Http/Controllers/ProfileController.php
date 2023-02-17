@@ -23,6 +23,11 @@ class ProfileController extends Controller
         //get roles
         $roles = Role::all();
 
+        //if current user is not admin , need remove role admin from $roles
+        if (!Auth::user()->hasRole('Admin')) {
+            $roles = Role::get()->except(1);
+        }
+
         //get current role user
         $currentRole = $request->user()->getRoleNames();
 
@@ -36,7 +41,7 @@ class ProfileController extends Controller
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
             'roles' => $roles,
-            'currentRole' => $currentRole[0],
+            'currentRole' => $currentRole[0]    ,
         ]);
     }
 
