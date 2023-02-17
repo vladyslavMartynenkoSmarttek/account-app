@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ValidateCountry;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Spatie\HttpLogger\Middlewares\HttpLogger;
 
@@ -23,7 +24,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 //        HttpLogger::class,
-        \App\Http\Middleware\LogRequest::class
+        \App\Http\Middleware\LogRequest::class,
+        ValidateCountry::class,
     ];
 
     /**
