@@ -3,6 +3,7 @@
     use App\Http\Controllers\AnalyticController;
     use App\Http\Controllers\PostController;
     use App\Http\Controllers\ProfileController;
+    use App\Http\Controllers\UsersController;
     use Illuminate\Foundation\Application;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
@@ -40,6 +41,9 @@
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
         Route::get('/analytic', [AnalyticController::class, 'index'])->name('analytic.index');
+
+        //route for users
+        Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     });
 
     require __DIR__ . '/auth.php';

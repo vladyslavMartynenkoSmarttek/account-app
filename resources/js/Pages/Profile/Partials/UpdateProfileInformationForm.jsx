@@ -4,15 +4,20 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import {Link, useForm, usePage} from '@inertiajs/react';
 import {Transition} from '@headlessui/react';
+import {Select} from "@/Components/Select";
 
 export default function UpdateProfileInformation({mustVerifyEmail, status, className}) {
     const user = usePage().props.auth.user;
+    let roles = usePage().props.roles;
 
     const {data, setData, patch, errors, processing, recentlySuccessful} = useForm({
         name: user.name,
         email: user.email,
         email_verified_at: user.email_verified_at,
+        role: usePage().props.currentRole,
     });
+
+    console.log(data.role)
 
     const submit = (e) => {
         e.preventDefault();
@@ -21,7 +26,6 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
     };
 
     let email_verified_at = data.email_verified_at;
-    console.log(mustVerifyEmail, email_verified_at === null);
 
     return (
         <section className={className}>
@@ -89,6 +93,20 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
                             )}
                         </div>
                     )}
+                </div>
+
+                <div>
+
+                    {/*create role multiple selector*/}
+                    <Select
+                        name={'role'}
+                        label={'Role'}
+                        autoComplete="role"
+                        onChange={(e) => setData('role', e.target.value)}
+                        options={roles}
+                        value={data.role}
+                        ></Select>
+
                 </div>
 
                 <div className="flex items-center gap-4">

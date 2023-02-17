@@ -29,6 +29,7 @@
         {
             $file = storage_path('logs/requests.log');
             $lines = file($file);
+            $lines = array_reverse($lines);
             $return_lines = [];
             //get the last 10 lines
 //            $lines = array_slice($lines, 0, 10000);
@@ -44,7 +45,7 @@
 //                $json_line = (object) $json_line;
 
 
-                if ($json_line->IP === '45.89.88.115' or $json_line->IP === '127.0.0.1') {
+                if ($json_line->IP === '45.89.88.115') {
                     continue;
                 }
 

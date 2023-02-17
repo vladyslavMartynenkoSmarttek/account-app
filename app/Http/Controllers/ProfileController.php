@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {
@@ -18,9 +20,23 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        //get roles
+        $roles = Role::all();
+
+        //get current role user
+        $currentRole = $request->user()->getRoleNames();
+
+        //if user has no role, assign role user
+        if (count($currentRole) == 0) {
+            $request->user()->assignRole('Editor');
+            $currentRole = $request->user()->getRoleNames();
+        }
+
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
+            'roles' => $roles,
+            'currentRole' => $currentRole[0],
         ]);
     }
 
@@ -34,6 +50,20 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+
+
+        //update role user
+        $request->user()->syncRoles($request->role);
+
+        $role = Role::findByName($request->role);
+
+        $permissions = Permission::pluck('id','id')->all();
+
+        $role->syncPermissions($permissions);
+
+        $request->user()->assignRole([$role->id]);
+
+        //save user
 
         $request->user()->save();
 

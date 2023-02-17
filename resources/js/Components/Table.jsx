@@ -20,8 +20,6 @@ export default function Table(props) {
         return () => clearInterval(interval);
     }, []);
 
-    console.log(lines);
-
 
     return (
         <div className="flex flex-col">
