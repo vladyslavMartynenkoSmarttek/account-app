@@ -44,8 +44,8 @@
 
 //                $json_line = (object) $json_line;
 
-
-                if ($json_line->IP === '45.89.88.115') {
+                $skip_ip = env('SKIP_IP', '45.89.88.115');
+                if ($json_line->IP === $skip_ip) {
                     continue;
                 }
 
