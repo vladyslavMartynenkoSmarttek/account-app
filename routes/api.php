@@ -15,9 +15,9 @@
     |
     */
 
-    Route::middleware(['auth:sanctum','blockIP'])->get('/user', function (Request $request) {
+    Route::middleware(['auth:sanctum', 'blockIP'])->get('/user', function (Request $request) {
         return $request->user();
     });
 
     //group auth:sanctum
-        Route::get('/analytic/logs', [AnalyticControllerAlias::class, 'getLogs'])->middleware(['blockIP'])->name('analytic.logs');
+    Route::get('/analytic/logs', [AnalyticControllerAlias::class, 'getLogs'])->middleware(['blockIP'])->name('analytic.logs');

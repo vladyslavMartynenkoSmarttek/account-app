@@ -23,10 +23,10 @@ export default function Table(props) {
 
     return (
         <div className="flex flex-col">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-scroll">
                 <div className=" w-full inline-block align-middle">
-                    <div className="overflow-x-scroll border rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200 ">
+                    <div className="overflow-x-scroll overflow-y-scroll  border rounded-lg">
+                        <table className="min-w-full divide-y overflow-scroll scroll-smooth hover:overflow-scroll divide-gray-200  ">
                             <thead className="bg-gray-50">
                             <tr>
                                 <th
@@ -80,7 +80,7 @@ export default function Table(props) {
 
                             </tr>
                             </thead>
-                            <tbody className="divide-y overflow-x-scroll divide-gray-200">
+                            <tbody className="divide-x overflow-scroll divide-gray-200 ">
                             {
                                 lines.map((line, index) => {
                                     if (line.ip) {

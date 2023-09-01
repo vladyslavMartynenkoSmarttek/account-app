@@ -20,6 +20,7 @@ module.exports = {
     },
 
     plugins: [// include Flowbite as a plugin in your Tailwind CSS project
-        require('flowbite/plugin')
+        require('flowbite/plugin'),
+        require('tailwind-scrollbar'),
     ],
 };

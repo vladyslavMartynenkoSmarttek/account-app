@@ -20,7 +20,7 @@ export default function DashboardAnalytic(props) {
 
             <div className="py-0">
                 <div className="max-w12-xl mx-auto pb-12 sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="bg-white overflow-x-scroll max-h-screen h-[80vh] hover:overflow-scroll shadow-sm sm:rounded-lg ">
                         <Table lines={lines}/>
                     </div>
                 </div>

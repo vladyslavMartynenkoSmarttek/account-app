@@ -24,6 +24,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 //        HttpLogger::class,
+        \App\Http\Middleware\NmapScanDetector::class,
+        \App\Http\Middleware\AttackDetector::class,
         \App\Http\Middleware\LogRequest::class,
         ValidateCountry::class,
     ];
@@ -74,5 +76,6 @@ class Kernel extends HttpKernel
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+        'nmap' => \App\Http\Middleware\NmapScanDetector::class,
     ];
 }

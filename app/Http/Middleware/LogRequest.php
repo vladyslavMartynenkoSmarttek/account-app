@@ -30,11 +30,6 @@ class LogRequest
                 'DATE' => date('Y-m-d H:i:s')
             ];
 
-            $serverLogs = collect($request->server())->map(function ($value, $key) {
-                return "{$key}: {$value}";
-            })->toArray();
-
-
             Log::channel('requests')->info(json_encode($log));
         }
 

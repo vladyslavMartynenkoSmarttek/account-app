@@ -32,7 +32,7 @@
             $country = json_decode($response->getBody()->getContents())->country;
 
             if ($country !== $needestCountry) {
-                return response()->json(['message' => 'the russian warship went to hell'], 403);
+                abort(403, 'The russian warship went to hell');
             }
 
             return $next($request);

@@ -3,6 +3,7 @@
     use App\Http\Controllers\AnalyticController;
     use App\Http\Controllers\PostController;
     use App\Http\Controllers\ProfileController;
+    use App\Http\Controllers\TestQueueEmails;
     use App\Http\Controllers\UsersController;
     use Illuminate\Foundation\Application;
     use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,10 @@
 
         //route for users
         Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+        //route for chat
+        Route::get('/chat', [UsersController::class, 'index'])->name('chat.index');
+
+        Route::get('sending-queue-emails', [TestQueueEmails::class,'sendTestEmails']);
     });
 
     require __DIR__ . '/auth.php';
