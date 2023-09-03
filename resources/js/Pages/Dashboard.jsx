@@ -3,6 +3,7 @@ import {Head} from '@inertiajs/react';
 import MapChart from "@/Components/Map";
 
 export default function Dashboard(props) {
+    console.log(props.mapMarkers)
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -28,7 +29,11 @@ export default function Dashboard(props) {
 
                 <div className="max-w-7xl mx-auto mt-5 pb-6 sm:px-6 lg:px-8  ">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div><MapChart /></div>
+                        <div>
+                            <MapChart
+                                mapMarkers={props.mapMarkers}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

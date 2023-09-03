@@ -1,6 +1,7 @@
 <?php
 
     use App\Http\Controllers\AnalyticController;
+    use App\Http\Controllers\DashboardController;
     use App\Http\Controllers\PostController;
     use App\Http\Controllers\ProfileController;
     use App\Http\Controllers\QueueEmails;
@@ -32,9 +33,11 @@
         ]);
     })->middleware(['blockIP']);
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->middleware(['auth', 'verified','blockIP'])->name('dashboard');
+    //Refacotr to dashboard controller
+//    Route::get('/dashboard', function () {
+//        return Inertia::render('Dashboard');
+//    })->middleware(['auth', 'verified','blockIP'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified','blockIP'])->name('dashboard');
 
     Route::middleware(['auth','blockIP'])->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
