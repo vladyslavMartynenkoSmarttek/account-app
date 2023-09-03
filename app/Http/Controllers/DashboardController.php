@@ -42,6 +42,18 @@ class DashboardController extends Controller
             //get ip
             $ip = $json_line->IP;
 
+            if (strpos($ip, '192.168') !== false) {
+                continue;
+            }
+            //skip 127.0.0.1
+            if (strpos($ip, '127.0.') !== false) {
+                continue;
+            }
+            //skip
+            if (strpos($ip, '45.89.') !== false) {
+                continue;
+            }
+
             $return_lines[] = $ip;
         }
 
@@ -54,17 +66,7 @@ class DashboardController extends Controller
         $lat_long = [];
         foreach ($unique_ips as $ip) {
             //skip local ips
-            if (strpos($ip, '192.168') !== false) {
-                continue;
-            }
-            //skip 127.0.0.1
-            if (strpos($ip, '127.0.') !== false) {
-                continue;
-            }
-            //skip
-            if (strpos($ip, '45.89.88.115') !== false) {
-                continue;
-            }
+
             $details = json_decode(file_get_contents("http://ip-api.com/json/{$ip}"));
 
             if (empty($details->lat) or empty($details->lon)) {
