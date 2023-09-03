@@ -2,7 +2,7 @@
 
     namespace App\Jobs;
 
-    use App\Mail\TestHelloEmail;
+    use App\Mail\HelloEmail;
     use Illuminate\Bus\Queueable;
     use Illuminate\Contracts\Queue\ShouldBeUnique;
     use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,7 +11,7 @@
     use Illuminate\Queue\SerializesModels;
     use Illuminate\Support\Facades\Mail;
 
-    class TestSendEmail implements ShouldQueue
+    class SendEmail implements ShouldQueue
     {
         use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -32,8 +32,7 @@
          */
         public function handle()
         {
-            $email = new TestHelloEmail();
+            $email = new HelloEmail();
             Mail::to('force55595@gmail.com')->send($email);
-
         }
     }

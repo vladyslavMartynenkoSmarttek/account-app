@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\TestSendEmail;
+use App\Jobs\SendEmail;
 use Illuminate\Http\Request;
 
-class TestQueueEmails extends Controller
+class QueueEmails extends Controller
 {
     /**
      * test email queues
      **/
     public function sendTestEmails()
     {
-        $emailJobs = new TestSendEmail();
+        $emailJobs = new SendEmail();
         $this->dispatch($emailJobs);
     }
 }

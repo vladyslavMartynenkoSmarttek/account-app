@@ -9,7 +9,7 @@
     use Illuminate\Mail\Mailables\Envelope;
     use Illuminate\Queue\SerializesModels;
 
-    class TestHelloEmail extends Mailable
+    class HelloEmail extends Mailable
     {
         use Queueable, SerializesModels;
 
@@ -43,7 +43,7 @@
         public function content(): Content
         {
             return new Content(
-                view: 'view.mail.testEmails',
+                htmlString: '<h1>Hello World</h1>',
             );
         }
 
