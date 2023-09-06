@@ -17,8 +17,6 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
         role: usePage().props.currentRole,
     });
 
-    console.log(data.role)
-
     const submit = (e) => {
         e.preventDefault();
 

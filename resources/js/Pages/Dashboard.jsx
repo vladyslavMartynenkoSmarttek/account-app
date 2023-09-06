@@ -3,7 +3,6 @@ import {Head} from '@inertiajs/react';
 import MapChart from "@/Components/Map";
 
 export default function Dashboard(props) {
-    console.log(props.mapMarkers)
     return (
         <AuthenticatedLayout
             auth={props.auth}

@@ -43,6 +43,11 @@
                 $json_line = json_decode($json_line);
 
                 $skip_ip = env('SKIP_IP', '45.89.88.115');
+
+                if (is_null($json_line)) {
+                    continue;
+                }
+
                 if ($json_line->IP === $skip_ip) {
                     continue;
                 }

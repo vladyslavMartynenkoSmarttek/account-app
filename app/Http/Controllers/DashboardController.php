@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -27,7 +25,7 @@ class DashboardController extends Controller
     public function getMapMarkers (): array
     {
         //get logs
-        $file = storage_path('logs/requests.log');
+        $file   = storage_path('logs/requests.log');
         $lines = file($file);
         $lines = array_reverse($lines);
         $return_lines = [];
@@ -35,12 +33,10 @@ class DashboardController extends Controller
         //get all lines
         foreach ($lines as $key => $line) {
             $position_bracket = strpos($line, '{');
-            $json_line = substr($line, $position_bracket);
-            $json_line = substr($json_line, 0, -2);
-            $json_line = json_decode($json_line);
-
-            //get ip
-            $ip = $json_line->IP;
+            $json_line        = substr($line, $position_bracket);
+            $json_line        = substr($json_line, 0, -2);
+            $json_line        = json_decode($json_line);
+            $ip               = $json_line->IP ?? '127.0.0.1';
 
             if (strpos($ip, '192.168') !== false) {
                 continue;

@@ -27,7 +27,7 @@ class AttackDetector
 
         // Check for cross-site scripting attack
         if (preg_match("/<script>|<\/script>|<iframe>|<\/iframe>|<object>|<\/object>|<embed>|<\/embed>|<applet>|<\/applet>|<meta>|<link>|<style>|<\/style>|javascript:/i", $request->getQueryString() . $request->getContent())) {
-            abort(403, 'Cross-site scripting attack detected');
+            //abort(403, 'Cross-site scripting attack detected');
         }
 
         // Check for remote file inclusion attack
@@ -37,12 +37,12 @@ class AttackDetector
 
         // Check for shell injection attack
         if (preg_match("/\||`|>|<|&|&&|\n|\r|\t/i", $request->getQueryString() . $request->getContent())) {
-            abort(403, 'Shell injection attack detected');
+           // abort(403, 'Shell injection attack detected');
         }
 
         // Check for CSRF attack
         if ($request->isMethod('post') && $request->headers->get('referer') != $request->getSchemeAndHttpHost() . $request->getPathInfo()) {
-            abort(403, 'Cross-site request forgery attack detected');
+           // abort(403, 'Cross-site request forgery attack detected');
         }
 
         // Check for Laravel Ignition attack

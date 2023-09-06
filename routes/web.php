@@ -1,6 +1,7 @@
 <?php
 
     use App\Http\Controllers\AnalyticController;
+    use App\Http\Controllers\ChatController;
     use App\Http\Controllers\DashboardController;
     use App\Http\Controllers\PostController;
     use App\Http\Controllers\ProfileController;
@@ -49,9 +50,13 @@
         //route for users
         Route::get('/users', [UsersController::class, 'index'])->name('users.index');
         //route for chat
-        Route::get('/chat', [UsersController::class, 'index'])->name('chat.index');
+        Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+        //message send
+        Route::post('/chat', [ChatController::class, 'send'])->name('chat.send');
 
         Route::get('sending-queue-emails', [QueueEmails::class,'sendTestEmails']);
+
+
     });
 
     require __DIR__ . '/auth.php';
